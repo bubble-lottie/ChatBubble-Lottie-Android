@@ -1,36 +1,43 @@
 package com.airbnb.lottie.value;
 
+import android.support.annotation.NonNull;
+
 public class ScaleXY {
-  private float scaleX;
-  private float scaleY;
+    private float scaleX;
+    private float scaleY;
 
-  public ScaleXY(float sx, float sy) {
-    this.scaleX = sx;
-    this.scaleY = sy;
-  }
+    public ScaleXY(float sx, float sy) {
+        this.scaleX = sx;
+        this.scaleY = sy;
+    }
 
-  public ScaleXY() {
-    this(1f, 1f);
-  }
+    public ScaleXY(@NonNull ScaleXY sc) {
+        this(sc.scaleX, sc.scaleY);
+    }
 
-  public float getScaleX() {
-    return scaleX;
-  }
+    public ScaleXY() {
+        this(1f, 1f);
+    }
 
-  public float getScaleY() {
-    return scaleY;
-  }
+    public float getScaleX() {
+        return scaleX;
+    }
 
-  public void set(float scaleX, float scaleY) {
-    this.scaleX = scaleX;
-    this.scaleY = scaleY;
-  }
+    public float getScaleY() {
+        return scaleY;
+    }
 
-  public boolean equals(float scaleX, float scaleY) {
-    return this.scaleX == scaleX && this.scaleY == scaleY;
-  }
+    public void set(float scaleX, float scaleY) {
+        this.scaleX = scaleX;
+        this.scaleY = scaleY;
+    }
 
-  @Override public String toString() {
-    return getScaleX() + "x" + getScaleY();
-  }
+    public boolean equals(float scaleX, float scaleY) {
+        return this.scaleX == scaleX && this.scaleY == scaleY;
+    }
+
+    @Override
+    public String toString() {
+        return getScaleX() + "x" + getScaleY();
+    }
 }

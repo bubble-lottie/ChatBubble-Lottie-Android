@@ -1,3 +1,4 @@
+include ':lottie2json_k'
 include ':LottieTest'
 //include ':LottieSample'
 include ':lottie'

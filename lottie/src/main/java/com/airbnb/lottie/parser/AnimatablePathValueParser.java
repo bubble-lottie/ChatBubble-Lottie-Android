@@ -57,10 +57,10 @@ public class AnimatablePathValueParser {
     reader.beginObject();
     while (reader.peek() != JsonReader.Token.END_OBJECT) {
       switch (reader.selectName(NAMES)) {
-        case 0:
+        case 0: // k
           pathAnimation = AnimatablePathValueParser.parse(reader, composition);
           break;
-        case 1:
+        case 1: // x
           if (reader.peek() == JsonReader.Token.STRING) {
             hasExpressions = true;
             reader.skipValue();
@@ -68,7 +68,7 @@ public class AnimatablePathValueParser {
             xAnimation = AnimatableValueParser.parseFloat(reader, composition);
           }
           break;
-        case 2:
+        case 2: // y
           if (reader.peek() == JsonReader.Token.STRING) {
             hasExpressions = true;
             reader.skipValue();

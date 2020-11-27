@@ -12,41 +12,50 @@ import java.util.List;
 
 class ShapeGroupParser {
 
-  private ShapeGroupParser() {}
-  private static JsonReader.Options NAMES = JsonReader.Options.of(
-      "nm",
-      "hd",
-      "it"
-  );
-  static ShapeGroup parse(
-      JsonReader reader, LottieComposition composition) throws IOException {
-    String name = null;
-    boolean hidden = false;
-    List<ContentModel> items = new ArrayList<>();
-
-    while (reader.hasNext()) {
-      switch (reader.selectName(NAMES)) {
-        case 0:
-          name = reader.nextString();
-          break;
-        case 1:
-          hidden = reader.nextBoolean();
-          break;
-        case 2:
-          reader.beginArray();
-          while (reader.hasNext()) {
-            ContentModel newItem = ContentModelParser.parse(reader, composition);
-            if (newItem != null) {
-              items.add(newItem);
-            }
-          }
-          reader.endArray();
-          break;
-        default:
-          reader.skipValue();
-      }
+    private ShapeGroupParser() {
     }
 
-    return new ShapeGroup(name, items, hidden);
-  }
+    private static JsonReader.Options NAMES = JsonReader.Options.of(
+            "nm",
+            "hd",
+            "it"
+            , "pty"
+    );
+
+    static ShapeGroup parse(
+            JsonReader reader, LottieComposition composition) throws IOException {
+        String name = null;
+        boolean hidden = false;
+        List<ContentModel> items = new ArrayList<>();
+        int pty = 0;
+        while (reader.hasNext()) {
+            switch (reader.selectName(NAMES)) {
+                case 0:
+                    name = reader.nextString();
+                    break;
+                case 1:
+                    hidden = reader.nextBoolean();
+                    break;
+                case 2:
+                    reader.beginArray();
+                    while (reader.hasNext()) {
+                        ContentModel newItem = ContentModelParser.parse(reader, composition);
+                        if (newItem != null) {
+                            items.add(newItem);
+                        }
+                    }
+                    reader.endArray();
+                    break;
+                case 3:
+                    pty = reader.nextInt();
+                    break;
+                default:
+                    reader.skipValue();
+            }
+        }
+
+        ShapeGroup shapeGroup = new ShapeGroup(name, items, hidden);
+        shapeGroup.setPty(pty);
+        return shapeGroup;
+    }
 }

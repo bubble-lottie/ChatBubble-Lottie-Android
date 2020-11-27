@@ -1,51 +1,67 @@
 package com.airbnb.lottie.model.content;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.airbnb.lottie.LottieDrawable;
 import com.airbnb.lottie.animation.content.Content;
 import com.airbnb.lottie.animation.content.RepeaterContent;
+import com.airbnb.lottie.model.PtyData;
 import com.airbnb.lottie.model.animatable.AnimatableFloatValue;
 import com.airbnb.lottie.model.animatable.AnimatableTransform;
 import com.airbnb.lottie.model.layer.BaseLayer;
 
 public class Repeater implements ContentModel {
-  private final String name;
-  private final AnimatableFloatValue copies;
-  private final AnimatableFloatValue offset;
-  private final AnimatableTransform transform;
-  private final boolean hidden;
+    private final String name;
+    private final AnimatableFloatValue copies;
+    private final AnimatableFloatValue offset;
+    private final AnimatableTransform transform;
+    private final boolean hidden;
 
-  public Repeater(String name, AnimatableFloatValue copies, AnimatableFloatValue offset,
-                  AnimatableTransform transform, boolean hidden) {
-    this.name = name;
-    this.copies = copies;
-    this.offset = offset;
-    this.transform = transform;
-    this.hidden = hidden;
-  }
+    public Repeater(String name, AnimatableFloatValue copies, AnimatableFloatValue offset,
+                    AnimatableTransform transform, boolean hidden) {
+        this.name = name;
+        this.copies = copies;
+        this.offset = offset;
+        this.transform = transform;
+        this.hidden = hidden;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public AnimatableFloatValue getCopies() {
-    return copies;
-  }
+    public AnimatableFloatValue getCopies() {
+        return copies;
+    }
 
-  public AnimatableFloatValue getOffset() {
-    return offset;
-  }
+    public AnimatableFloatValue getOffset() {
+        return offset;
+    }
 
-  public AnimatableTransform getTransform() {
-    return transform;
-  }
+    public AnimatableTransform getTransform() {
+        return transform;
+    }
 
-  public boolean isHidden() {
-    return hidden;
-  }
+    public boolean isHidden() {
+        return hidden;
+    }
 
-  @Nullable @Override public Content toContent(LottieDrawable drawable, BaseLayer layer) {
-    return new RepeaterContent(drawable, layer, this);
-  }
+    @Nullable
+    @Override
+    public Content toContent(LottieDrawable drawable, BaseLayer layer) {
+        return new RepeaterContent(drawable, layer, this);
+    }
+
+    private int pty;
+
+    @Override
+    public void pty(@NonNull PtyData pd) {
+    }
+
+    @Override
+    public void setPty(int pty) {
+        this.pty = pty;
+    }
+
 }
