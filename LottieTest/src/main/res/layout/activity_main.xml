@@ -10,6 +10,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
         app:layout_constraintBottom_toTopOf="@id/seek"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,6 +20,7 @@
             android:id="@+id/lov"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@android:color/holo_green_light"
             app:layout_constraintBottom_toBottomOf="@id/tv"
             app:layout_constraintEnd_toEndOf="@id/tv"
             app:layout_constraintStart_toStartOf="@id/tv"
@@ -29,9 +31,16 @@
             android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:paddingStart="18dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="24dp"
             android:textColor="@android:color/tertiary_text_light"
-            android:textSize="20sp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="测试文字" />
 
     </android.support.constraint.ConstraintLayout>

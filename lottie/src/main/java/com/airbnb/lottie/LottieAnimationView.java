@@ -562,8 +562,8 @@ public class LottieAnimationView extends AppCompatImageView {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
 //        Log.d("TAG", "onSizeChanged: w:" + w + " h:" + h + " oldW:" + oldw + " oldH:h" + oldh);
-        if (sizeChangeListener != null) sizeChangeListener.onSizeChange();
         lottieDrawable.getPtyData().setMeasPx(w, h);
+        if (sizeChangeListener != null) sizeChangeListener.onSizeChange();
     }
 
     private OnLovSizeChangeListener sizeChangeListener;

@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
         seek.setOnSeekBarChangeListener(SeekListener(tv, lov))
         seek.max = 20
-        lov.setBackgroundResource(android.R.color.holo_green_light)
         seek.progress = 0
         lov.setSizeChangeListener { dealLoadAnim() }
         tv.minEms = 4 // 最小宽度
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun dealLoadAnim() {
-        if (file == null) lov.setAnimation("狐狸气泡左.json") else lov.setAnimation(FileInputStream(file), null)
+        if (file == null) lov.setAnimation("元旦气泡左.json") else lov.setAnimation(FileInputStream(file), null)
         lov.playAnimation()
     }
 
